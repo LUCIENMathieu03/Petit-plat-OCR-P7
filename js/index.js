@@ -5,14 +5,13 @@ import recipeApi from "./api.js";
 
 class App {
     constructor() {
-        this.recipeApi = new recipeApi("./data/recipes copy.js");
+        this.recipeApi = new recipeApi("./data/recipes.json");
     }
 
     displayRecipes(recipes) {
         recipes
             .map((recipe) => new RecipeModel(recipe))
             .forEach((recipe) => {
-                // console.log(recipe.ingredients);
                 const recipeToDisplay = new recipesCard(recipe);
                 const recipeDom = recipeToDisplay.getRecipeCard();
                 constants.recipesResult.appendChild(recipeDom);
@@ -21,7 +20,6 @@ class App {
 
     async main() {
         const recipesData = await this.recipeApi.getRecipes();
-        // console.log(recipesData);
         this.displayRecipes(recipesData.recipes);
     }
 }

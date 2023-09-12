@@ -49,35 +49,30 @@ export default class recipesCard {
         title.innerHTML = this.recipe.title;
 
         //create DOM for each ingredient elements
-
         let ingredientsTab = this.recipe.ingredients;
-        //console.log(ingredientsTab);
-        for (let ingredient in ingredientsTab) {
-            // console.log(ingredientsTab[ingredient]);
-            // console.log(ingredient);
+
+        ingredientsTab.map((ingredient) => {
             ingredientsDOM += `<div class="text-[14px]">
                                 <p class="font-[500]">
-                                    ${ingredientsTab[ingredient].ingredient}
+                                    ${ingredient.ingredient}
                                 </p>
                                 <p class="text-[#7A7A7A]">
                                     ${
-                                        ingredientsTab[ingredient].quantity
-                                            ? ingredientsTab[ingredient]
-                                                  .quantity
+                                        ingredient.quantity
+                                            ? ingredient.quantity
                                             : ""
                                     } 
                                     ${
-                                        ingredientsTab[ingredient].unit
-                                            ? ingredientsTab[ingredient]
-                                                  .unit === "grammes"
+                                        ingredient.unit
+                                            ? ingredient.unit === "grammes"
                                                 ? "g"
-                                                : ingredientsTab[ingredient]
-                                                      .unit
+                                                : ingredient.unit
                                             : ""
                                     } 
                                 </p>
                             </div>`;
-        }
+        });
+
         //DOM for the actual recipe
         cardContentRecipe.innerHTML = ` <div class="mt-[29px]">
                                             <h3 class="text-[12px] font-[700] text-[#7A7A7A] tracking-[9%]">
