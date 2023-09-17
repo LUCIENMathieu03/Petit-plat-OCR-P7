@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./output.css" rel="stylesheet" />
+        <link href="./output.css" rel="stylesheet" defer />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,18 +44,33 @@
                             >Rechercher une recette</label
                         >
                         <div
-                            class="relative mt-[30px] rounded-md shadow-sm w-[300px] lg:w-[954px] sm:w-[427px]"
+                            class="mt-[30px] flex rounded-md shadow-sm w-[300px] lg:w-[954px] sm:w-[427px] bg-white items-center"
                         >
                             <input
                                 type="text"
                                 name="search"
                                 id="search"
-                                class="sm:h-[72px] h-[50px] block w-full rounded-md border-0 placeholder:text-[#7A7A7A] placeholder:text-[12px] md:placeholder:text-[16px] pl-[10px] sm:pl-[35px]"
+                                class="focus:outline-none sm:h-[72px] h-[50px] block w-full rounded-md border-0 placeholder:text-[#7A7A7A] placeholder:text-[12px] md:placeholder:text-[16px] pl-[10px] sm:pl-[35px]"
                                 placeholder="Rechercher une recette, un ingrédient, ..."
                             />
-                            <button
-                                class="bg-black absolute inset-y-0 right-0 my-[5px] mr-[5px] p-[12px] rounded-md sm:my-[10px] sm:mr-[10px] flex hover:bg-[#FFD15B] text-white hover:text-black"
+                            <div
+                                class="flex items-center text-[13px] sm:pr-[24px] pr-[10px] xCross hidden"
                             >
+                                <i
+                                    class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                ></i>
+                            </div>
+
+                            <button
+                                class="w-[40px] sm:w-[51px] h-[40px] sm:h-[51px] mr-[5px] sm:mr-[10px] bg-black relative rounded-md flex items-center justify-center text-white hover:text-black"
+                            >
+                                <div
+                                    class="p-[12px] w-full transition duration-[300ms] bg-[#FFD15B] opacity-[0%] hover:opacity-[100%] absolute inset-y-0 inset-x-0 z-10 rounded-md flex justify-center items-center"
+                                >
+                                    <i
+                                        class="fa-solid fa-magnifying-glass sm:text-[27px]"
+                                    ></i>
+                                </div>
                                 <i
                                     class="fa-solid fa-magnifying-glass sm:text-[27px]"
                                 ></i>
@@ -65,6 +80,7 @@
                 </div>
             </div>
         </header>
+
         <main
             class="bg-[#EDEDED] w-[100%] flex flex-col justify-center items-center font-['Manrope']"
         >
@@ -74,46 +90,130 @@
                 <div
                     class="dropdownFilters flex justify-between text-[12px] sm:text-[16px]"
                 >
-                    <div class="dropdown__ingredients">
+                    <div class="dropdown__ingredients relative">
                         <button
                             class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-white rounded-[11px] mr-[10px] sm:mr-[64px]"
                         >
                             <p class="mr-[10px] lg:mr-[63px]">Ingrédients</p>
                             <i class="fa-solid fa-angle-up"></i>
                         </button>
-                        <div class="options hidden">
-                            <div id="popularity" tabindex="0">Popularité</div>
-                            <div id="date" tabindex="0">Date</div>
-                            <div id="title" tabindex="0">Titre</div>
+
+                        <div
+                            class="options hidden flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[64px] right-[10px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px]"
+                        >
+                            <div
+                                class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] h-[36px] items-center"
+                            >
+                                <input
+                                    type="text"
+                                    placeholder=" "
+                                    class="w-full h-full focus:outline-none pl-[9px] pr-[7px] text-[14px]"
+                                />
+                                <div
+                                    class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                >
+                                    <i
+                                        class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                    ></i>
+                                </div>
+                                <i
+                                    class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
+                                ></i>
+                            </div>
+
+                            <ul class="optionsChoice overflow-y-auto pt-[17px]">
+                                <li
+                                    id="popularity"
+                                    tabindex="0"
+                                    class="px-[10px] py-[7px] hover:bg-[#FFD15B]"
+                                >
+                                    Élément
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="dropdown__devices">
+                    <div class="dropdown__devices relative">
                         <button
                             class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-white rounded-[11px] mr-[10px] sm:mr-[64px]"
                         >
                             <p class="mr-[10px] lg:mr-[63px]">Appareil</p>
                             <i class="fa-solid fa-angle-up"></i>
                         </button>
-                        <div class="options hidden">
-                            <div id="popularity" tabindex="0">Popularité</div>
-                            <div id="date" tabindex="0">Date</div>
-                            <div id="title" tabindex="0">Titre</div>
+                        <div
+                            class="options hidden flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[64px] right-[10px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px]"
+                        >
+                            <div
+                                class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] mb-[17px] items-center"
+                            >
+                                <input
+                                    type="text"
+                                    placeholder=" "
+                                    class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
+                                />
+                                <div
+                                    class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                >
+                                    <i
+                                        class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                    ></i>
+                                </div>
+                                <i
+                                    class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
+                                ></i>
+                            </div>
+
+                            <ul class="optionsChoice overflow-y-auto">
+                                <li
+                                    id="popularity"
+                                    tabindex="0"
+                                    class="px-[10px] py-[7px] hover:bg-[#FFD15B]"
+                                >
+                                    Élément
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="dropdown__ustensils">
+                    <div class="dropdown__ustensils relative">
                         <button
                             class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-white rounded-[11px] sm:mr-[40px]"
                         >
                             <p class="mr-[10px] lg:mr-[63px]">Ustensiles</p>
                             <i class="fa-solid fa-angle-up"></i>
                         </button>
+                        <div
+                            class="options hidden flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[40px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px]"
+                        >
+                            <div
+                                class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] mb-[17px] items-center"
+                            >
+                                <input
+                                    type="text"
+                                    placeholder=" "
+                                    class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
+                                />
+                                <div
+                                    class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                >
+                                    <i
+                                        class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                    ></i>
+                                </div>
+                                <i
+                                    class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
+                                ></i>
+                            </div>
 
-                        <div class="options hidden">
-                            <div id="popularity" tabindex="0">Popularité</div>
-                            <div id="date" tabindex="0">Date</div>
-                            <div id="title" tabindex="0">Titre</div>
+                            <ul class="optionsChoice overflow-y-scroll">
+                                <li
+                                    id="popularity"
+                                    tabindex="0"
+                                    class="px-[10px] py-[7px] hover:bg-[#FFD15B]"
+                                >
+                                    Élément
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -130,130 +230,35 @@
                 class="filtersResult mt-[21px] container flex justify-center flex-wrap text-[12px] px-[15px] sm:text-[16px] sm:px-[0px] sm:justify-normal"
             >
                 <div
-                    class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
+                    class="filtersResult_item flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
                 >
                     <p class="mr-[10px] md:mr-[60px]">Creme de coco</p>
                     <button><i class="fa-solid fa-xmark"></i></button>
                 </div>
 
                 <div
-                    class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
+                    class="filtersResult_item flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
                 >
-                    <p class="mr-[10px] md:mr-[60px]">Creme de coco</p>
+                    <p class="mr-[10px] md:mr-[60px]">Vanille</p>
                     <button><i class="fa-solid fa-xmark"></i></button>
                 </div>
 
                 <div
-                    class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
+                    class="filtersResult_item flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
                 >
-                    <p class="mr-[10px] md:mr-[60px]">Creme de coco</p>
+                    <p class="mr-[10px] md:mr-[60px]">Saffran</p>
                     <button><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
 
             <div
                 class="recipesResult mt-[43px] container mb-[201px] flex justify-center flex-wrap xl:grid grid-cols-[380px_380px_380px] gap-x-[48px] gap-y-[66px] xl:justify-between"
-            >
-                <div
-                    class="recipesResult__card w-[300px] sm:w-[380px] bg-white rounded-[21px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] relative"
-                >
-                    <div
-                        class="recipesResult__cardDuration bg-[#FFD15B] inline-block px-[15px] py-[5px] rounded-[14px] absolute top-[21px] right-[22px]"
-                    >
-                        10min
-                    </div>
-                    <img
-                        src="assets/images/Recette01.jpg"
-                        class="object-cover h-[253px] w-full rounded-tl-[21px] rounded-tr-[21px]"
-                    />
-                    <div
-                        class="recipesResult__cardContent mt-[32px] mb-[61px] mx-[25px]"
-                    >
-                        <h2 class="font-['Anton'] text-[18px]">
-                            Limonade de coco
-                        </h2>
-                        <div class="recipesResult__cardContentRecipe mt-[29px]">
-                            <h3
-                                class="text-[12px] font-[700] text-[#7A7A7A] tracking-[9%]"
-                            >
-                                RECETTE
-                            </h3>
-                            <p
-                                class="recipesResult__cardContentRecipeText mt-[15px] text-[14px]"
-                            >
-                                Mettre les glaçons à votre goût dans le blender,
-                                ajouter le lait, la crème de coco, le jus de 2
-                                citrons et le sucre. Mixer jusqu'à avoir la
-                                consistence désirée.
-                            </p>
-                            <h3
-                                class="text-[12px] font-[700] text-[#7A7A7A] mt-[32px] tracking-[9%]"
-                            >
-                                INGRÉDIENTS
-                            </h3>
-                            <div
-                                class="recipesResult__cardContentRecipeIngredients mt-[15px] grid gap-[21px] grid-cols-2"
-                            >
-                                <div class="ingredientItem text-[14px]">
-                                    <p class="ingredientItemName font-[500]">
-                                        Lait de coco
-                                    </p>
-                                    <p
-                                        class="ingredientItemQuantity text-[#7A7A7A]"
-                                    >
-                                        400ml
-                                    </p>
-                                </div>
-                                <div class="ingredientItem text-[14px]">
-                                    <p class="ingredientItemName font-[500]">
-                                        Jus de citron
-                                    </p>
-                                    <p
-                                        class="ingredientItemQuantity text-[#7A7A7A]"
-                                    >
-                                        2
-                                    </p>
-                                </div>
-                                <div class="ingredientItem text-[14px]">
-                                    <p class="ingredientItemName font-[500]">
-                                        Créme de coco
-                                    </p>
-                                    <p
-                                        class="ingredientItemQuantity text-[#7A7A7A]"
-                                    >
-                                        4 cuillères
-                                    </p>
-                                </div>
-                                <div class="ingredientItem text-[14px]">
-                                    <p class="ingredientItemName font-[500]">
-                                        Sucre
-                                    </p>
-                                    <p
-                                        class="ingredientItemQuantity text-[#7A7A7A]"
-                                    >
-                                        20g
-                                    </p>
-                                </div>
-                                <div class="ingredientItem text-[14px]">
-                                    <p class="ingredientItemName font-[500]">
-                                        Glaçons
-                                    </p>
-                                    <p
-                                        class="ingredientItemQuantity text-[#7A7A7A]"
-                                    >
-                                        2
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            ></div>
         </main>
     </body>
     <script
         src="https://kit.fontawesome.com/2f81acc905.js"
         crossorigin="anonymous"
     ></script>
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/index.js" defer></script>
 </html>
