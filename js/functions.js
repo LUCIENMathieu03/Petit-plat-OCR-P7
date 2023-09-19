@@ -128,6 +128,15 @@ const dropdownToggle = (dropdownMenuDom) => {
     // }
 };
 
+const addFilterOptionSelected = (e) => {
+    const selectedOptionToDisplay = new filterOption();
+    const selectedOptionDom = selectedOptionToDisplay.getSelectedOption(
+        e.target.innerText
+    );
+    console.log(domElements.filtersResultItemDiv);
+    domElements.filtersResultItemDiv.appendChild(selectedOptionDom);
+};
+
 export {
     dropdownToggle,
     removeFilterItem,
@@ -135,4 +144,5 @@ export {
     toggleCrossInput,
     displayRecipes,
     displayFilterOptions,
+    addFilterOptionSelected,
 };

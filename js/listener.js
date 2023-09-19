@@ -4,6 +4,7 @@ import {
     removeFilterItem,
     emptyInputValue,
     toggleCrossInput,
+    addFilterOptionSelected,
 } from "./functions.js";
 
 const listener = () => {
@@ -40,6 +41,12 @@ const listener = () => {
     for (let crossButton of domElements.filtersResultItemButton) {
         crossButton.addEventListener("click", (e) => {
             removeFilterItem(e);
+        });
+    }
+
+    for (let option of domElements.filterOptions) {
+        option.addEventListener("click", (e) => {
+            addFilterOptionSelected(e);
         });
     }
 };

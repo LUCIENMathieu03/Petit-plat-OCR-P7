@@ -10,8 +10,8 @@ class App {
     async main() {
         const recipesData = await this.recipeApi.getRecipes();
         displayRecipes(recipesData.recipes);
-        listener();
         displayFilterOptions(recipesData.recipes);
+        listener();
     }
 }
 
