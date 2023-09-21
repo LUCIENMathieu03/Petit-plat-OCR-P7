@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./output.css" rel="stylesheet" defer />
+        <link href="./output.css" rel="stylesheet" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,7 +61,7 @@
                                 ></i>
                             </div>
 
-                            <button
+                            <div
                                 class="w-[40px] sm:w-[51px] h-[40px] sm:h-[51px] mr-[5px] sm:mr-[10px] bg-black relative rounded-md flex items-center justify-center text-white hover:text-black"
                             >
                                 <div
@@ -74,7 +74,7 @@
                                 <i
                                     class="fa-solid fa-magnifying-glass sm:text-[27px]"
                                 ></i>
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,9 @@
                         <button
                             class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-white rounded-[11px] mr-[10px] sm:mr-[64px]"
                         >
-                            <p class="mr-[10px] lg:mr-[63px]">Ingrédients</p>
+                            <span class="mr-[10px] lg:mr-[63px]"
+                                >Ingrédients</span
+                            >
                             <i class="fa-solid fa-angle-up"></i>
                         </button>
 
@@ -137,7 +139,7 @@
                         <button
                             class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-white rounded-[11px] mr-[10px] sm:mr-[64px]"
                         >
-                            <p class="mr-[10px] lg:mr-[63px]">Appareil</p>
+                            <span class="mr-[10px] lg:mr-[63px]">Appareil</span>
                             <i class="fa-solid fa-angle-up"></i>
                         </button>
                         <div
@@ -179,7 +181,9 @@
                         <button
                             class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-white rounded-[11px] sm:mr-[40px]"
                         >
-                            <p class="mr-[10px] lg:mr-[63px]">Ustensiles</p>
+                            <span class="mr-[10px] lg:mr-[63px]"
+                                >Ustensiles</span
+                            >
                             <i class="fa-solid fa-angle-up"></i>
                         </button>
                         <div
@@ -255,10 +259,10 @@
                 class="recipesResult mt-[43px] container mb-[201px] flex justify-center flex-wrap xl:grid grid-cols-[380px_380px_380px] gap-x-[48px] gap-y-[66px] xl:justify-between"
             ></div>
         </main>
+        <script
+            src="https://kit.fontawesome.com/2f81acc905.js"
+            crossorigin="anonymous"
+        ></script>
+        <script type="module" src="js/index.js"></script>
     </body>
-    <script
-        src="https://kit.fontawesome.com/2f81acc905.js"
-        crossorigin="anonymous"
-    ></script>
-    <script type="module" src="js/index.js" defer></script>
 </html>
