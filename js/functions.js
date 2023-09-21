@@ -3,6 +3,7 @@ import recipesCard from "./templates/recipeCard.js";
 import filterOption from "./templates/filterOption.js";
 import RecipeModel from "./models/RecipeModel.js";
 import FilterModel from "./models/FilterModel.js";
+import { createTagEvent, deleteTagEvent } from "./listener.js";
 
 //
 //Display all the recipes
@@ -52,6 +53,8 @@ function displayFilterOptions(data) {
             .appendChild(ustensilsOptionDom);
     });
 
+    createTagEvent();
+
     function getAllOptions(recipeFilter) {
         for (let ingredient of recipeFilter.ingredients) {
             if (!ingredients.includes(ingredient.ingredient.toLowerCase())) {
@@ -87,7 +90,12 @@ const emptyInputValue = (e) => {
 //
 const removeFilterItem = (event) => {
     const filter = event.target.closest(".filtersResult_item");
-    filter.parentNode.removeChild(filter);
+    const parentElem = filter.parentNode;
+
+    parentElem.removeChild(filter);
+    domElements.tagButton = document.querySelectorAll(
+        ".filtersResult_item button"
+    );
 };
 
 //
@@ -128,13 +136,37 @@ const dropdownToggle = (dropdownMenuDom) => {
     // }
 };
 
+//
+//for listener: add tag
+//
 const addFilterOptionSelected = (e) => {
     const selectedOptionToDisplay = new filterOption();
     const selectedOptionDom = selectedOptionToDisplay.getSelectedOption(
         e.target.innerText
     );
-    console.log(domElements.filtersResultItemDiv);
-    domElements.filtersResultItemDiv.appendChild(selectedOptionDom);
+    //recalculate the existing tag button
+    domElements.tagButton = document.querySelectorAll(
+        ".filtersResult_item button"
+    );
+
+    //Check if the tag has already been added
+    let canBeAdd = true;
+    for (let crossButton of domElements.tagButton) {
+        const pText = crossButton.previousElementSibling.innerText;
+
+        if (pText == e.target.innerText) {
+            canBeAdd = false;
+        }
+    }
+    if (canBeAdd) {
+        domElements.tagContainer.appendChild(selectedOptionDom);
+    }
+
+    //Adding deleteTag event only on new tag button
+    selectedOptionDom
+        .querySelector("button")
+        .addEventListener("click", (e) => removeFilterItem(e));
+    /////deleteTagEvent();
 };
 
 export {

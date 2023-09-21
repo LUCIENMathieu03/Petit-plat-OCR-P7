@@ -1,5 +1,5 @@
 import recipeApi from "./api.js";
-import listener from "./listener.js";
+import { listener } from "./listener.js";
 import { displayRecipes, displayFilterOptions } from "./functions.js";
 
 class App {
