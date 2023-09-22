@@ -3,7 +3,7 @@ import recipesCard from "./templates/recipeCard.js";
 import filterOption from "./templates/filterOption.js";
 import RecipeModel from "./models/RecipeModel.js";
 import FilterModel from "./models/FilterModel.js";
-import { createTagEvent, deleteTagEvent } from "./listener.js";
+import { createTagEvent } from "./listener.js";
 
 //
 //Display all the recipes
