@@ -9,6 +9,7 @@ import { createTagEvent } from "./listener.js";
 //Display all the recipes
 //
 function displayRecipes(data) {
+    domElements.recipesResult.innerHTML = "";
     data.map((recipe) => new RecipeModel(recipe)).forEach((recipe) => {
         const recipeToDisplay = new recipesCard(recipe);
         const recipeDom = recipeToDisplay.getRecipeCard();
@@ -169,6 +170,39 @@ const addFilterOptionSelected = (e) => {
     /////deleteTagEvent();
 };
 
+//Search engine
+const searchRecipe = (inputValue) => {
+    if (inputValue.length >= 3) {
+        console.time("test");
+        //empty the array to not have repetition
+        recipeFiltered = [];
+
+        recipeFiltered = allRecipes.filter((recipe) => {
+            let titre = recipe.name.toLowerCase();
+            let description = recipe.description.toLowerCase();
+            let ingredientArray = [];
+
+            ingredientArray = recipe.ingredients.map(
+                (ingredient) => ingredient.ingredient
+            );
+
+            if (
+                titre.includes(inputValue.toLowerCase()) ||
+                description.includes(inputValue.toLowerCase()) ||
+                ingredientArray.join(" ").includes(inputValue.toLowerCase())
+            ) {
+                return recipe;
+            }
+        });
+        console.timeEnd("test");
+
+        displayRecipes(recipeFiltered);
+    }
+    if (inputValue.length == 2) {
+        displayRecipes(allRecipes);
+    }
+};
+
 export {
     dropdownToggle,
     removeFilterItem,
@@ -177,4 +211,5 @@ export {
     displayRecipes,
     displayFilterOptions,
     addFilterOptionSelected,
+    searchRecipe,
 };
