@@ -173,7 +173,7 @@ const addFilterOptionSelected = (e) => {
 //Search engine
 const searchRecipe = (inputValue) => {
     if (inputValue.length >= 3) {
-        console.time("test");
+        console.time("timing");
         //empty the array to not have repetition
         recipeFiltered = [];
 
@@ -194,7 +194,8 @@ const searchRecipe = (inputValue) => {
                 return recipe;
             }
         });
-        console.timeEnd("test");
+        console.log(inputValue);
+        console.timeEnd("timing");
 
         displayRecipes(recipeFiltered);
     }
