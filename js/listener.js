@@ -5,6 +5,7 @@ import {
     emptyInputValue,
     toggleCrossInput,
     addFilterOptionSelected,
+    searchRecipe,
 } from "./functions.js";
 
 const listener = () => {
@@ -38,6 +39,10 @@ const listener = () => {
             toggleCrossInput(e);
         });
     }
+
+    domElements.mainInput.addEventListener("input", (e) => {
+        searchRecipe(e.target.value);
+    });
 
     deleteTagEvent();
 };

@@ -1,6 +1,8 @@
 import recipeApi from "./api.js";
 import { listener } from "./listener.js";
 import { displayRecipes, displayFilterOptions } from "./functions.js";
+globalThis.allRecipes = [];
+globalThis.recipeFiltered = [];
 
 class App {
     constructor() {
@@ -9,8 +11,9 @@ class App {
 
     async main() {
         const recipesData = await this.recipeApi.getRecipes();
-        displayRecipes(recipesData.recipes);
-        displayFilterOptions(recipesData.recipes);
+        allRecipes = recipesData.recipes;
+        displayRecipes(allRecipes);
+        displayFilterOptions(allRecipes);
         listener();
     }
 }

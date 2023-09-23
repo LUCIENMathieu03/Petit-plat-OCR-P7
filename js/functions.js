@@ -9,6 +9,7 @@ import { createTagEvent } from "./listener.js";
 //Display all the recipes
 //
 function displayRecipes(data) {
+    domElements.recipesResult.innerHTML = "";
     data.map((recipe) => new RecipeModel(recipe)).forEach((recipe) => {
         const recipeToDisplay = new recipesCard(recipe);
         const recipeDom = recipeToDisplay.getRecipeCard();
@@ -24,6 +25,13 @@ function displayFilterOptions(data) {
     let ingredients = [];
     let appliances = [];
     let ustensils = [];
+
+    //Empty all the options before adding filtered options
+    domElements.dropdownIngredients.querySelector(".optionsChoice").innerHTML =
+        " ";
+    domElements.dropdownDevices.querySelector(".optionsChoice").innerHTML = " ";
+    domElements.dropdownUstensils.querySelector(".optionsChoice").innerHTML =
+        " ";
 
     //Get all the options from data
     data.map((recipe) => new FilterModel(recipe)).forEach((recipeFilter) => {
@@ -169,6 +177,40 @@ const addFilterOptionSelected = (e) => {
     /////deleteTagEvent();
 };
 
+//Search engine
+const searchRecipe = (inputValue) => {
+    if (inputValue.length >= 3) {
+        console.log(allRecipes);
+        console.time("label");
+        //empty the array to not have repetition
+        recipeFiltered = [];
+
+        for (let i = 0; i <= allRecipes.length - 1; i++) {
+            let titre = allRecipes[i].name.toLowerCase();
+            let description = allRecipes[i].description.toLowerCase();
+            let ingredientArray = [];
+            for (let ingredient of allRecipes[i].ingredients) {
+                ingredientArray.push(ingredient.ingredient);
+            }
+
+            //check if any recipe match with the input
+            if (
+                titre.includes(inputValue.toLowerCase()) ||
+                description.includes(inputValue.toLowerCase()) ||
+                ingredientArray.join(" ").includes(inputValue.toLowerCase())
+            ) {
+                recipeFiltered.push(allRecipes[i]);
+            }
+        }
+
+        displayRecipes(recipeFiltered);
+        console.timeEnd("label");
+    }
+    if (inputValue.length == 2) {
+        displayRecipes(allRecipes);
+    }
+};
+
 export {
     dropdownToggle,
     removeFilterItem,
@@ -177,4 +219,5 @@ export {
     displayRecipes,
     displayFilterOptions,
     addFilterOptionSelected,
+    searchRecipe,
 };

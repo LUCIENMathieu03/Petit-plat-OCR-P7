@@ -7,6 +7,7 @@ const searchInputs = document.querySelectorAll("input");
 const tagContainer = document.querySelector(".filtersResult");
 let tagButton = document.querySelectorAll(".filtersResult_item button");
 let filterOptions = document.querySelectorAll(".optionsChoice li");
+const mainInput = document.querySelector("#search");
 
 const domElements = {
     recipesResult,
@@ -18,6 +19,7 @@ const domElements = {
     inputCross,
     searchInputs,
     filterOptions,
+    mainInput,
 };
 
 export default domElements;
