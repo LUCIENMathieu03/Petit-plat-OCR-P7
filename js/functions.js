@@ -180,8 +180,7 @@ const addFilterOptionSelected = (e) => {
 //Search engine
 const searchRecipe = (inputValue) => {
     if (inputValue.length >= 3) {
-        console.log(allRecipes);
-        console.time("label");
+        console.time("timing");
         //empty the array to not have repetition
         recipeFiltered = [];
 
@@ -204,7 +203,8 @@ const searchRecipe = (inputValue) => {
         }
 
         displayRecipes(recipeFiltered);
-        console.timeEnd("label");
+        console.log(inputValue);
+        console.timeEnd("timing");
     }
     if (inputValue.length == 2) {
         displayRecipes(allRecipes);
