@@ -1,13 +1,14 @@
 export default class filterOption {
     constructor() {}
 
-    getOption(filterOption) {
+    getOption(filterOption, category) {
         const li = document.createElement("li");
         li.classList.add(
             "px-[10px]",
             "py-[7px]",
             "hover:bg-[#FFD15B]",
-            "cursor-pointer"
+            "cursor-pointer",
+            category
         );
         li.setAttribute("id", filterOption);
         li.setAttribute("tabindex", 0);

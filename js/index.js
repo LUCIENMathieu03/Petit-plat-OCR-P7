@@ -1,8 +1,8 @@
 import recipeApi from "./api.js";
 import { listener } from "./listener.js";
 import { displayRecipes, displayFilterOptions } from "./functions.js";
-globalThis.allRecipes = [];
-globalThis.recipeFiltered = [];
+
+//allRecipe is a global variable
 
 class App {
     constructor() {

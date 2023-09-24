@@ -9,6 +9,14 @@ let tagButton = document.querySelectorAll(".filtersResult_item button");
 let filterOptions = document.querySelectorAll(".optionsChoice li");
 const mainInput = document.querySelector("#search");
 
+globalThis.allRecipes = [];
+globalThis.recipeFiltered = [];
+globalThis.selectedOptions = {
+    ingredients: [],
+    appareils: [],
+    ustensiles: [],
+};
+
 const domElements = {
     recipesResult,
     dropdownDevices,
