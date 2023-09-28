@@ -70,6 +70,7 @@ function displayFilterOptions(data) {
             .appendChild(ustensilsOptionDom);
     });
 
+    //add event on click on each li
     createTagEvent();
 
     function getAllOptions(recipeFilter) {
@@ -101,9 +102,17 @@ const emptyInputValue = (e) => {
     }
     if (input.id == "search") {
         searchRecipe(domElements.mainInput.value);
+    } else {
+        let optionsList = e.target
+            .closest(".options")
+            .querySelector(".optionsChoice")
+            .querySelectorAll("li");
+        for (let option of optionsList) {
+            option.classList.remove("hidden");
+        }
     }
+
     e.target.parentNode.classList.add("hidden");
-    //verifier si on est dans le main input et lancer la recherche si on est dedans
 };
 
 //
@@ -130,6 +139,7 @@ const removeFilterItem = (event) => {
     );
 
     console.log(domElements.mainInput.value);
+    //update the search
     searchRecipe(domElements.mainInput.value);
 
     parentElem.removeChild(filter);
@@ -213,7 +223,7 @@ const addFilterOptionSelected = (e) => {
             selectedOptions.ustensiles.push(e.target.innerText);
         }
         console.log(selectedOptions);
-
+        //update the search
         searchRecipe(domElements.mainInput.value);
 
         //Adding deleteTag event only on new tag button
@@ -222,6 +232,17 @@ const addFilterOptionSelected = (e) => {
             .addEventListener("click", (e) => removeFilterItem(e));
     }
 };
+
+//Update the number of recipes displayed at the top right
+const updateRecipesNumber = (recipeDiplayed) => {
+    const numberOfRecipe = recipeDiplayed.length;
+    if (numberOfRecipe == 0) {
+        domElements.recipeNumber.innerHTML = `0 recette`;
+    } else {
+        domElements.recipeNumber.innerHTML = `${numberOfRecipe} recettes`;
+    }
+};
+//
 
 //Search engine
 const searchRecipe = (inputValue) => {
@@ -241,8 +262,6 @@ const searchRecipe = (inputValue) => {
             let titre = recipe.name.toLowerCase();
             let description = recipe.description.toLowerCase();
             let ingredientArray = [];
-            // let appliance = recipe.appliance;
-            // let ustensilArray = recipe.ustensils;
 
             ingredientArray = recipe.ingredients.map(
                 (ingredient) => ingredient.ingredient
@@ -262,6 +281,7 @@ const searchRecipe = (inputValue) => {
 
         displayRecipes(recipeFiltered);
         displayFilterOptions(recipeFiltered);
+        updateRecipesNumber(recipeFiltered);
     }
     //Search with tag and text (if the input is filled)
     if (
@@ -320,13 +340,6 @@ const searchRecipe = (inputValue) => {
             }
 
             if (inputValue.length >= 3) {
-                console.log(
-                    titre.includes(inputValue.toLowerCase()) ||
-                        description.includes(inputValue.toLowerCase()) ||
-                        ingredientArray
-                            .join(" ")
-                            .includes(inputValue.toLowerCase())
-                );
                 if (
                     !(
                         titre.includes(inputValue.toLowerCase()) ||
@@ -348,6 +361,7 @@ const searchRecipe = (inputValue) => {
         console.log(recipeFiltered);
         displayRecipes(recipeFiltered);
         displayFilterOptions(recipeFiltered);
+        updateRecipesNumber(recipeFiltered);
     }
 
     if (
@@ -358,6 +372,7 @@ const searchRecipe = (inputValue) => {
     ) {
         displayRecipes(allRecipes);
         displayFilterOptions(allRecipes);
+        updateRecipesNumber(allRecipes);
     }
 };
 
@@ -370,4 +385,5 @@ export {
     displayFilterOptions,
     addFilterOptionSelected,
     searchRecipe,
+    updateRecipesNumber,
 };

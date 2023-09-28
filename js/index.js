@@ -1,6 +1,10 @@
 import recipeApi from "./api.js";
 import { listener } from "./listener.js";
-import { displayRecipes, displayFilterOptions } from "./functions.js";
+import {
+    displayRecipes,
+    displayFilterOptions,
+    updateRecipesNumber,
+} from "./functions.js";
 
 //allRecipe is a global variable
 
@@ -14,6 +18,7 @@ class App {
         allRecipes = recipesData.recipes;
         displayRecipes(allRecipes);
         displayFilterOptions(allRecipes);
+        updateRecipesNumber(allRecipes);
         listener();
     }
 }
