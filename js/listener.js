@@ -5,6 +5,7 @@ import {
     emptyInputValue,
     toggleCrossInput,
     addFilterOptionSelected,
+    searchRecipe,
 } from "./functions.js";
 
 const listener = () => {
@@ -39,7 +40,18 @@ const listener = () => {
         });
     }
 
+    //Display result when the input is filled
+    domElements.mainInput.addEventListener("input", (e) => {
+        searchRecipe(e.target.value);
+    });
+
+    //adding event to the listener function
     deleteTagEvent();
+
+    //adding fliter tag event
+    filterTagOptions(domElements.inputFilterIngredient);
+    filterTagOptions(domElements.inputFilterAppareil);
+    filterTagOptions(domElements.inputFilterUstensil);
 };
 
 //Delete a tag
@@ -64,6 +76,30 @@ function createTagEvent() {
             addFilterOptionSelected(e);
         });
     }
+}
+
+//Filter the tag options
+function filterTagOptions(input) {
+    input.addEventListener("input", (e) => {
+        let optionListContainer = e.target
+            .closest(".options")
+            .querySelector(".optionsChoice");
+        let listOptions = optionListContainer.querySelectorAll("li");
+
+        for (let option of listOptions) {
+            if (
+                !option.innerHTML
+                    .toLowerCase()
+                    .includes(e.target.value.toLowerCase())
+            ) {
+                option.classList.add("hidden");
+            } else {
+                if (option.classList.contains("hidden")) {
+                    option.classList.remove("hidden");
+                }
+            }
+        }
+    });
 }
 
 export { listener, deleteTagEvent, createTagEvent };
