@@ -42,7 +42,10 @@ const listener = () => {
 
     //Display result when the input is filled
     domElements.mainInput.addEventListener("input", (e) => {
-        searchRecipe(e.target.value);
+        const regex = new RegExp("^[a-zA-Z '-]+$");
+        if (regex.test(e.target.value)) {
+            searchRecipe(e.target.value);
+        }
     });
 
     //adding event to the listener function
@@ -90,7 +93,7 @@ function filterTagOptions(input) {
             if (
                 !option.innerHTML
                     .toLowerCase()
-                    .includes(e.target.value.toLowerCase())
+                    .startsWith(e.target.value.toLowerCase())
             ) {
                 option.classList.add("hidden");
             } else {
