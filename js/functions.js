@@ -179,6 +179,11 @@ const toggleCrossInput = (e) => {
 //for listener: show the drowpdown's filter options
 //
 const dropdownToggle = (dropdownMenuDom) => {
+    console.log(dropdownMenuDom.parentNode.children);
+    for (let dropdown of dropdownMenuDom.parentNode.children) {
+        const options = dropdown.querySelector(".options");
+        options.classList.add("hidden");
+    }
     const options = dropdownMenuDom.querySelector(".options");
     options.classList.toggle("hidden");
 

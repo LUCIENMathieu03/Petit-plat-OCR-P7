@@ -602,8 +602,28 @@ video {
   top: 21px;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
 .z-10 {
   z-index: 10;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .mx-3 {
@@ -779,6 +799,14 @@ video {
   width: 100%;
 }
 
+.w-auto {
+  width: auto;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
 .origin-\[50\%_0\%\] {
   transform-origin: 50% 0%;
 }
@@ -917,8 +945,40 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[\'url\(assets\/bg\.png\)\'\] {
+  background-color: 'url(assets/bg.png)';
+}
+
+.bg-\[object-cover\] {
+  background-color: object-cover;
+}
+
+.bg-\[url\(assets\/bg\.png\)\] {
+  background-image: url(assets/bg.png);
+}
+
+.bg-\[url\(\'assets\/bg\.png\'\)\] {
+  background-image: url('assets/bg.png');
+}
+
 .bg-cover {
   background-size: cover;
+}
+
+.bg-auto {
+  background-size: auto;
+}
+
+.bg-clip-border {
+  background-clip: border-box;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.bg-repeat {
+  background-repeat: repeat;
 }
 
 .bg-no-repeat {
@@ -928,6 +988,11 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .p-\[12px\] {
@@ -1193,6 +1258,10 @@ video {
 
   .sm\:w-\[51px\] {
     width: 51px;
+  }
+
+  .sm\:w-full {
+    width: 100%;
   }
 
   .sm\:flex-row {
