@@ -18,7 +18,8 @@ export default class recipesCard {
             "bg-white",
             "rounded-[21px]",
             "shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]",
-            "relative"
+            "relative",
+            "animate-fadeUp"
         );
 
         duration.classList.add(

@@ -182,28 +182,51 @@ const dropdownToggle = (dropdownMenuDom) => {
     for (let dropdown of dropdownMenuDom.parentNode.children) {
         if (dropdownMenuDom != dropdown) {
             const options = dropdown.querySelector(".options");
-            options.classList.add("hidden");
+            const arrow = dropdown.querySelector("i");
+
+            if (options.classList.contains("animate-dropdownOpening")) {
+                options.classList.replace(
+                    "animate-dropdownOpening",
+                    "animate-dropdownClosing"
+                );
+            }
+
+            if (arrow.classList.contains("animate-arrowDropdownOpen")) {
+                arrow.classList.replace(
+                    "animate-arrowDropdownOpen",
+                    "animate-arrowDropdownClose"
+                );
+            }
         }
     }
-    const options = dropdownMenuDom.querySelector(".options");
-    options.classList.toggle("hidden");
 
     //animation
-    // if (options.classList.contains("hidden")) {
-    //     if (options.classList.contains("animate-dropdownClose")) {
-    //         options.classList.remove("animate-dropdownClose");
-    //     }
-    //     options.classList.add("animate-dropdownOpen");
-    //     options.classList.remove("hidden");
-    // } else {
-    //     options.classList.replace(
-    //         "animate-dropdownOpen",
-    //         "animate-dropdownClose"
-    //     );
-    //     setTimeout(() => {
-    //         options.classList.add("hidden");
-    //     }, "500");
-    // }
+    ////dropdown open and close
+    const options = dropdownMenuDom.querySelector(".options");
+
+    if (options.classList.contains("animate-dropdownOpening")) {
+        options.classList.replace(
+            "animate-dropdownOpening",
+            "animate-dropdownClosing"
+        );
+    } else if (options.classList.contains("animate-dropdownClosing")) {
+        options.classList.remove("animate-dropdownClosing");
+        options.classList.add("animate-dropdownOpening");
+    }
+    ////arrow rotate
+    const arrow = dropdownMenuDom.querySelector("i");
+
+    if (arrow.classList.contains("animate-arrowDropdownClose")) {
+        arrow.classList.replace(
+            "animate-arrowDropdownClose",
+            "animate-arrowDropdownOpen"
+        );
+    } else if (arrow.classList.contains("animate-arrowDropdownOpen")) {
+        arrow.classList.replace(
+            "animate-arrowDropdownOpen",
+            "animate-arrowDropdownClose"
+        );
+    }
 };
 
 //
