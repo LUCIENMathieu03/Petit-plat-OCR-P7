@@ -150,7 +150,6 @@ const removeFilterItem = (event) => {
         selectedOptions.ustensiles
     );
 
-    console.log(domElements.mainInput.value);
     //update the search
     searchRecipe(domElements.mainInput.value);
 
@@ -263,7 +262,6 @@ const addFilterOptionSelected = (e) => {
         } else if (e.target.classList.contains("ustensil")) {
             selectedOptions.ustensiles.push(e.target.innerText);
         }
-        console.log(selectedOptions);
         //update the search
         searchRecipe(domElements.mainInput.value);
 
@@ -396,7 +394,6 @@ const searchRecipe = (inputValue) => {
             }
         });
 
-        console.log(recipeFiltered);
         displayRecipes(recipeFiltered);
         displayFilterOptions(recipeFiltered);
         updateRecipesNumber(recipeFiltered);
