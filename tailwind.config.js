@@ -4,21 +4,34 @@ module.exports = {
     theme: {
         extend: {
             keyframes: {
-                dropdown: {
-                    "0%": { transform: "scaleY(0)", visibility: "hidden" },
+                dropdownOpening: {
+                    "0%": { transform: "scaleY(0)" },
                     "100%": { transform: "scaleY(1)" },
                 },
-                fade: {
-                    "0%": { opacity: "0%" },
-                    "100%": { opacity: "100%" },
+                dropdownClosing: {
+                    "0%": { transform: "scaleY(1)" },
+                    "100%": { transform: "scaleY(0)" },
+                },
+                arrowDropdownOpen: {
+                    "0%": { transform: "rotate(0deg)" },
+                    "100%": { transform: "rotate(180deg)" },
+                },
+                arrowDropdownClose: {
+                    "0%": { transform: "rotate(180deg)" },
+                    "100%": { transform: "rotate(0deg)" },
+                },
+                fadeUp: {
+                    "0%": { opacity: "0%", transform: "translateY(100px)" },
+                    "100%": { opacity: "100%", transform: "translateY(0px)" },
                 },
             },
             animation: {
-                dropdownOpen: "dropdown 400ms both normal",
-                dropdownClose: "dropdown 400ms both reverse",
-                fade: "fade 300ms ",
+                dropdownOpening: "dropdownOpening 200ms both",
+                dropdownClosing: "dropdownClosing 200ms both",
+                arrowDropdownOpen: "arrowDropdownOpen 400ms both",
+                arrowDropdownClose: "arrowDropdownClose 400ms both",
+                fadeUp: "fadeUp 400ms both",
             },
         },
     },
-    plugins: [],
 };

@@ -15,6 +15,18 @@ function displayRecipes(data) {
         const recipeDom = recipeToDisplay.getRecipeCard();
         domElements.recipesResult.appendChild(recipeDom);
     });
+
+    if (data.length === 0) {
+        const noRecipe = document.querySelector(".noRecipe");
+        noRecipe.classList.remove("hidden");
+        const inputRequest = document.querySelector(".inputRequest");
+        inputRequest.innerHTML = ` "${domElements.mainInput.value}"`;
+    } else {
+        const noRecipe = document.querySelector(".noRecipe");
+        if (!noRecipe.classList.contains("hidden")) {
+            noRecipe.classList.add("hidden");
+        }
+    }
 }
 
 //
@@ -100,7 +112,7 @@ const emptyInputValue = (e) => {
     if (input.value) {
         input.value = "";
     }
-    if (input.id == "search") {
+    if (input.id === "search") {
         searchRecipe(domElements.mainInput.value);
     } else {
         let optionsList = e.target
@@ -125,7 +137,7 @@ const removeFilterItem = (event) => {
     //Remove also the unselected option in the global array for the search engine
     const removeInGlobalObject = (array) => {
         return array.filter((item) => {
-            if (!(filter.querySelector("p").innerText == item)) {
+            if (!(filter.querySelector("p").innerText === item)) {
                 return item;
             }
         });
@@ -138,7 +150,6 @@ const removeFilterItem = (event) => {
         selectedOptions.ustensiles
     );
 
-    console.log(domElements.mainInput.value);
     //update the search
     searchRecipe(domElements.mainInput.value);
 
@@ -167,25 +178,54 @@ const toggleCrossInput = (e) => {
 //for listener: show the drowpdown's filter options
 //
 const dropdownToggle = (dropdownMenuDom) => {
-    const options = dropdownMenuDom.querySelector(".options");
-    options.classList.toggle("hidden");
+    for (let dropdown of dropdownMenuDom.parentNode.children) {
+        if (dropdownMenuDom != dropdown) {
+            const options = dropdown.querySelector(".options");
+            const arrow = dropdown.querySelector("i");
+
+            if (options.classList.contains("animate-dropdownOpening")) {
+                options.classList.replace(
+                    "animate-dropdownOpening",
+                    "animate-dropdownClosing"
+                );
+            }
+
+            if (arrow.classList.contains("animate-arrowDropdownOpen")) {
+                arrow.classList.replace(
+                    "animate-arrowDropdownOpen",
+                    "animate-arrowDropdownClose"
+                );
+            }
+        }
+    }
 
     //animation
-    // if (options.classList.contains("hidden")) {
-    //     if (options.classList.contains("animate-dropdownClose")) {
-    //         options.classList.remove("animate-dropdownClose");
-    //     }
-    //     options.classList.add("animate-dropdownOpen");
-    //     options.classList.remove("hidden");
-    // } else {
-    //     options.classList.replace(
-    //         "animate-dropdownOpen",
-    //         "animate-dropdownClose"
-    //     );
-    //     setTimeout(() => {
-    //         options.classList.add("hidden");
-    //     }, "500");
-    // }
+    ////dropdown open and close
+    const options = dropdownMenuDom.querySelector(".options");
+
+    if (options.classList.contains("animate-dropdownOpening")) {
+        options.classList.replace(
+            "animate-dropdownOpening",
+            "animate-dropdownClosing"
+        );
+    } else if (options.classList.contains("animate-dropdownClosing")) {
+        options.classList.remove("animate-dropdownClosing");
+        options.classList.add("animate-dropdownOpening");
+    }
+    ////arrow rotate
+    const arrow = dropdownMenuDom.querySelector("i");
+
+    if (arrow.classList.contains("animate-arrowDropdownClose")) {
+        arrow.classList.replace(
+            "animate-arrowDropdownClose",
+            "animate-arrowDropdownOpen"
+        );
+    } else if (arrow.classList.contains("animate-arrowDropdownOpen")) {
+        arrow.classList.replace(
+            "animate-arrowDropdownOpen",
+            "animate-arrowDropdownClose"
+        );
+    }
 };
 
 //
@@ -202,7 +242,7 @@ const addFilterOptionSelected = (e) => {
     for (let crossButton of domElements.tagButton) {
         const pText = crossButton.previousElementSibling.innerText;
 
-        if (pText == e.target.innerText) {
+        if (pText === e.target.innerText) {
             canBeAdd = false;
         }
     }
@@ -222,7 +262,6 @@ const addFilterOptionSelected = (e) => {
         } else if (e.target.classList.contains("ustensil")) {
             selectedOptions.ustensiles.push(e.target.innerText);
         }
-        console.log(selectedOptions);
         //update the search
         searchRecipe(domElements.mainInput.value);
 
@@ -236,11 +275,8 @@ const addFilterOptionSelected = (e) => {
 //Update the number of recipes displayed at the top right
 const updateRecipesNumber = (recipeDiplayed) => {
     const numberOfRecipe = recipeDiplayed.length;
-    if (numberOfRecipe == 0) {
-        domElements.recipeNumber.innerHTML = `0 recette`;
-    } else {
-        domElements.recipeNumber.innerHTML = `${numberOfRecipe} recettes`;
-    }
+    domElements.recipeNumber.innerHTML =
+        `${numberOfRecipe} recette` + `${numberOfRecipe === 0 ? "" : "s"}`;
 };
 //
 
@@ -249,9 +285,9 @@ const searchRecipe = (inputValue) => {
     //Search w/o tag
     if (
         inputValue.length >= 3 &&
-        selectedOptions.ingredients.length == 0 &&
-        selectedOptions.appareils.length == 0 &&
-        selectedOptions.ustensiles.length == 0
+        selectedOptions.ingredients.length === 0 &&
+        selectedOptions.appareils.length === 0 &&
+        selectedOptions.ustensiles.length === 0
     ) {
         console.time("timing");
 
@@ -353,12 +389,11 @@ const searchRecipe = (inputValue) => {
                 }
             }
 
-            if (canBeAdd == true) {
+            if (canBeAdd === true) {
                 return recipe;
             }
         });
 
-        console.log(recipeFiltered);
         displayRecipes(recipeFiltered);
         displayFilterOptions(recipeFiltered);
         updateRecipesNumber(recipeFiltered);
@@ -366,13 +401,20 @@ const searchRecipe = (inputValue) => {
 
     if (
         inputValue.length <= 2 &&
-        selectedOptions.ingredients.length == 0 &&
-        selectedOptions.appareils.length == 0 &&
-        selectedOptions.ustensiles.length == 0
+        selectedOptions.ingredients.length === 0 &&
+        selectedOptions.appareils.length === 0 &&
+        selectedOptions.ustensiles.length === 0
     ) {
-        displayRecipes(allRecipes);
-        displayFilterOptions(allRecipes);
-        updateRecipesNumber(allRecipes);
+        const recipeNumberDisplayed = parseInt(
+            document.querySelector(".recipiesNumber").innerHTML
+        );
+        if (recipeNumberDisplayed !== 50) {
+            //50 is the total number of recipe so it will update only if necessary
+
+            displayRecipes(allRecipes);
+            displayFilterOptions(allRecipes);
+            updateRecipesNumber(allRecipes);
+        }
     }
 };
 

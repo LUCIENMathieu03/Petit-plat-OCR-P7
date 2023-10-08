@@ -16,8 +16,7 @@
     </head>
     <body>
         <header
-            class="h-[667px] flex justify-center bg-cover bg-no-repeat relative overflow-hidden font-['Manrope']"
-            style="background-image: url(assets/bg.png)"
+            class="h-[667px] flex justify-center relative overflow-hidden font-['Manrope'] bg-[url('assets/bg.png')] bg-cover bg-center"
         >
             <div class="container">
                 <div class="w-full flex justify-center md:justify-normal">
@@ -65,7 +64,7 @@
                                 class="w-[40px] sm:w-[51px] h-[40px] sm:h-[51px] mr-[5px] sm:mr-[10px] bg-black relative rounded-md flex items-center justify-center text-white hover:text-black"
                             >
                                 <div
-                                    class="p-[12px] w-full transition duration-[300ms] bg-[#FFD15B] opacity-[0%] hover:opacity-[100%] absolute inset-y-0 inset-x-0 z-10 rounded-md flex justify-center items-center"
+                                    class="p-[12px] w-[40px] sm:w-[51px] h-[40px] sm:h-[51px] transition duration-[300ms] bg-[#FFD15B] opacity-[0%] hover:opacity-[100%] absolute inset-y-0 inset-x-0 z-10 rounded-md flex justify-center items-center"
                                 >
                                     <i
                                         class="fa-solid fa-magnifying-glass sm:text-[27px]"
@@ -88,7 +87,7 @@
                 class="container flex flex-col-reverse sm:flex-row justify-between items-center mt-[21px]"
             >
                 <div
-                    class="dropdownFilters flex justify-between text-[12px] sm:text-[16px]"
+                    class="dropdownFilters flex justify-evenly text-[12px] sm:text-[16px] w-full sm:w-auto"
                 >
                     <div class="dropdown__ingredients relative">
                         <button
@@ -97,42 +96,42 @@
                             <span class="mr-[10px] lg:mr-[63px]"
                                 >Ingrédients</span
                             >
-                            <i class="fa-solid fa-angle-up"></i>
+                            <i
+                                class="fa-solid fa-angle-up animate-arrowDropdownClose"
+                            ></i>
                         </button>
 
                         <div
-                            class="options hidden flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[64px] right-[10px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px]"
+                            class="options flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[64px] right-[10px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px] animate-dropdownClosing"
                         >
-                            <div
-                                class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] items-center"
-                            >
-                                <input
-                                    type="text"
-                                    placeholder=" "
-                                    id="searchIngredient"
-                                    class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
-                                />
+                            <div>
                                 <div
-                                    class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                    class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] items-center"
                                 >
+                                    <input
+                                        type="text"
+                                        placeholder=" "
+                                        id="searchIngredient"
+                                        class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
+                                    />
+                                    <div
+                                        class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                    >
+                                        <i
+                                            class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                        ></i>
+                                    </div>
                                     <i
-                                        class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                        class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
                                     ></i>
                                 </div>
-                                <i
-                                    class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
-                                ></i>
-                            </div>
 
-                            <ul class="optionsChoice overflow-y-auto pt-[17px]">
-                                <!-- <li
-                                    id="popularity"
-                                    tabindex="0"
-                                    class="px-[10px] py-[7px] hover:bg-[#FFD15B]"
+                                <ul
+                                    class="optionsChoice overflow-y-auto pt-[17px]"
                                 >
-                                    Élément
-                                </li> -->
-                            </ul>
+                                    <!-- the Options choice-->
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -141,41 +140,39 @@
                             class="flex items-center px-[10px] py-[17px] sm:px-[16px] bg-white rounded-[11px] mr-[10px] sm:mr-[64px]"
                         >
                             <span class="mr-[10px] lg:mr-[63px]">Appareil</span>
-                            <i class="fa-solid fa-angle-up"></i>
+                            <i
+                                class="fa-solid fa-angle-up animate-arrowDropdownClose"
+                            ></i>
                         </button>
                         <div
-                            class="options hidden flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[64px] right-[10px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px]"
+                            class="options flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[64px] right-[10px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px] animate-dropdownClosing"
                         >
-                            <div
-                                class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] mb-[17px] items-center"
-                            >
-                                <input
-                                    type="text"
-                                    placeholder=" "
-                                    id="searchAppliance"
-                                    class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
-                                />
+                            <div>
                                 <div
-                                    class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                    class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] mb-[17px] items-center"
                                 >
+                                    <input
+                                        type="text"
+                                        placeholder=" "
+                                        id="searchAppliance"
+                                        class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
+                                    />
+                                    <div
+                                        class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                    >
+                                        <i
+                                            class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                        ></i>
+                                    </div>
                                     <i
-                                        class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                        class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
                                     ></i>
                                 </div>
-                                <i
-                                    class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
-                                ></i>
-                            </div>
 
-                            <ul class="optionsChoice overflow-y-auto">
-                                <!-- <li
-                                    id="popularity"
-                                    tabindex="0"
-                                    class="px-[10px] py-[7px] hover:bg-[#FFD15B]"
-                                >
-                                    Élément
-                                </li> -->
-                            </ul>
+                                <ul class="optionsChoice overflow-y-auto">
+                                    <!-- the Options choice-->
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -186,41 +183,39 @@
                             <span class="mr-[10px] lg:mr-[63px]"
                                 >Ustensiles</span
                             >
-                            <i class="fa-solid fa-angle-up"></i>
+                            <i
+                                class="fa-solid fa-angle-up animate-arrowDropdownClose"
+                            ></i>
                         </button>
                         <div
-                            class="options hidden flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[40px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px]"
+                            class="options flex flex-col bg-white pt-[11px] mt-[-14px] rounded-bl-[11px] rounded-br-[11px] absolute left-0 sm:right-[40px] origin-[50%_0%] z-10 overflow-x-hidden max-h-[315px] animate-dropdownClosing"
                         >
-                            <div
-                                class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] mb-[17px] items-center"
-                            >
-                                <input
-                                    type="text"
-                                    placeholder=" "
-                                    id="searchUstensil"
-                                    class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
-                                />
+                            <div>
                                 <div
-                                    class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                    class="border border-[#C6C6C6] flex text-[#C6C6C6] mx-[16px] mb-[17px] items-center"
                                 >
+                                    <input
+                                        type="text"
+                                        placeholder=" "
+                                        id="searchUstensil"
+                                        class="w-full h-[36px] focus:outline-none pl-[9px] pr-[7px] text-[14px]"
+                                    />
+                                    <div
+                                        class="flex items-center text-[6px] pr-[10px] xCross hidden"
+                                    >
+                                        <i
+                                            class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                        ></i>
+                                    </div>
                                     <i
-                                        class="fa-solid fa-x text-[#7A7A7A] emptyInput cursor-pointer"
+                                        class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
                                     ></i>
                                 </div>
-                                <i
-                                    class="fa-solid fa-magnifying-glass text-[14px] mr-[11px]"
-                                ></i>
-                            </div>
 
-                            <ul class="optionsChoice overflow-y-scroll">
-                                <!-- <li
-                                    id="popularity"
-                                    tabindex="0"
-                                    class="px-[10px] py-[7px] hover:bg-[#FFD15B]"
-                                >
-                                    Élément
-                                </li> -->
-                            </ul>
+                                <ul class="optionsChoice overflow-y-scroll">
+                                    <!-- the Options choice-->
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -236,30 +231,17 @@
             <div
                 class="filtersResult mt-[21px] container flex justify-center flex-wrap text-[12px] px-[15px] sm:text-[16px] sm:px-[0px] sm:justify-normal"
             >
-                <!-- <div
-                    class="filtersResult_item flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
-                >
-                    <p class="mr-[10px] md:mr-[60px]">Creme de coco</p>
-                    <button><i class="fa-solid fa-xmark"></i></button>
-                </div>
-
-                <div
-                    class="filtersResult_item flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
-                >
-                    <p class="mr-[10px] md:mr-[60px]">Vanille</p>
-                    <button><i class="fa-solid fa-xmark"></i></button>
-                </div>
-
-                <div
-                    class="filtersResult_item flex items-center px-[10px] py-[17px] sm:px-[16px] bg-[#FFD15B] w-fit rounded-[11px] mx-[5px] mb-[5px]"
-                >
-                    <p class="mr-[10px] md:mr-[60px]">Saffran</p>
-                    <button><i class="fa-solid fa-xmark"></i></button>
-                </div> -->
+                <!-- The tags will appear here -->
             </div>
-
+            <p
+                class="noRecipe font-['Anton'] text-[18px] text-center mt-[100px] animate-fadeUp"
+            >
+                Aucune recette ne contient
+                <span class="inputRequest"></span> vous pouvez chercher « tarte
+                aux pommes », « poisson », etc...
+            </p>
             <div
-                class="recipesResult mt-[43px] container mb-[201px] flex justify-center flex-wrap xl:grid grid-cols-[380px_380px_380px] gap-x-[48px] gap-y-[66px] xl:justify-between"
+                class="recipesResult mt-[43px] container mb-[100px] flex justify-center flex-wrap xl:grid grid-cols-[380px_380px_380px] gap-x-[48px] gap-y-[66px] xl:justify-between"
             ></div>
         </main>
         <script
